@@ -65,7 +65,7 @@ Openshift Install Preparation:
         
       Add the htpasswd password for the account (http://www.htaccesstools.com/htpasswd-generator/)
           
-          openshift_master_htpasswd_users={'admin' : '  '} Eg: $apr1$XSA0DeSq$37BCBi9Vs41pMlvoDwevP1 == R3dis
+          openshift_master_htpasswd_users={'admin' : '  '} Eg: $apr1xxxxxq$37BCBi9Vs41pMlvoDwevP1 == rl
           
       Add the master and apps FQDN for the below parameters
           
@@ -133,4 +133,5 @@ Clone the Openshift-ansible Repository
  Deploy the cluster
   
       ansible-playbook openshift-ansible/playbooks/deploy_cluster.yml -i inventory --key-file ssh_key.pem
-     (Note -- you may have an authentication failure and the deployment may stop then. Please restart the deployment and it         should finish successfully)
+     (Note -- you may have an authentication failure and the deployment may stop then. Please restart 
+     the deployment and it should finish successfully)
