@@ -17,8 +17,8 @@ openshift_hosted_registry_storage_kind=object
 openshift_hosted_registry_storage_provider=s3
 openshift_hosted_registry_storage_s3_accesskey=<aws_access_key value>
 openshift_hosted_registry_storage_s3_secretkey=<aws_secret_key value>
-openshift_hosted_registry_storage_s3_bucket=mm-okd-west
-openshift_hosted_registry_storage_s3_region=us-west-2c
+openshift_hosted_registry_storage_s3_bucket=<region>
+openshift_hosted_registry_storage_s3_region=<region>
 openshift_hosted_registry_storage_s3_chunksize=26214400
 openshift_hosted_registry_storage_s3_rootdirectory=/registry
 openshift_hosted_registry_pullthrough=true
@@ -31,21 +31,21 @@ os_sdn_network_plugin_name='redhat/openshift-ovs-multitenant'
 openshift_install_examples=true
 openshift_docker_options='--selinux-enabled --insecure-registry 172.30.0.0/16'
 openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider'}]
-openshift_master_htpasswd_users={'admin' : '$apr1$XSA0DeSq$37BCBi9Vs41pMlvoDwevP1'}
+openshift_master_htpasswd_users={'admin' : '$apr1$XSA0DeSq$37BxxxxxxxxoDwevP1'}
 openshift_disable_check=disk_availability,docker_storage,memory_availability
 openshift_hosted_router_selector='node-role.kubernetes.io/infra=true'
-openshift_public_hostname=master.okdw1.demo-rlec.redislabs.com
-openshift_master_default_subdomain=apps.okdw1.demo-rlec.redislabs.com
+openshift_public_hostname=master.<FQDN>
+openshift_master_default_subdomain=apps.<FQDN>
 
 [masters]
-master.okdw1.demo-rlec.redislabs.com
+master.<FQDN>
 
 [etcd]
-master.okdw1.demo-rlec.redislabs.com
+master.<FQDN>
 
 [nodes]
-master.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-master-infra' openshift_schedulable=true
-node1.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
-node2.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
-node3.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
+master.<FQDN>openshift_node_group_name='node-config-master-infra' openshift_schedulable=true
+node1.<FQDN> openshift_node_group_name='node-config-compute'
+node2.<FQDN> openshift_node_group_name='node-config-compute'
+node3.<FQDN> openshift_node_group_name='node-config-compute'
 
