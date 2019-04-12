@@ -10,8 +10,8 @@ ansible_become=true
 
 openshift_cloudprovider_kind=aws
 openshift_clusterid=openshift
-openshift_cloudprovider_aws_access_key=AKIAJX6BODNNCF3LP5JQ
-openshift_cloudprovider_aws_secret_key=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
+openshift_cloudprovider_aws_access_key=<>
+openshift_cloudprovider_aws_secret_key=<>
 
 openshift_hosted_registry_storage_kind=object
 openshift_hosted_registry_storage_provider=s3
