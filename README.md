@@ -42,12 +42,54 @@ Environment Preparation:
       a. all traffic to and from all external IP of the nodes
       b. all internal traffic for the security group
       c. DNS ports
+   
+   6. Create an S3 Bucket in the same region as the instances
   
 Openshift Install Preparation:
   
   1. Preparing the Inventory File
       
-  2. Preparing the prepare.yaml file
+      Change the following in the inventory file:
+      
+      Add the AWS Access key and the secret key
+      
+          openshift_cloudprovider_aws_access_key=<aws_access_key value>
+          openshift_cloudprovider_aws_secret_key=<aws_secret_key value>
+          openshift_hosted_registry_storage_s3_accesskey=<aws_access_key value>
+          openshift_hosted_registry_storage_s3_secretkey=<aws_secret_key value>
+        
+      Add the S3 bucket location
+      
+          openshift_hosted_registry_storage_s3_bucket=< . > . eg:mm-okd-west
+          openshift_hosted_registry_storage_s3_region=< . > . eg:us-west-2c
+        
+      Add the htpasswd password for the account (http://www.htaccesstools.com/htpasswd-generator/)
+          
+          openshift_master_htpasswd_users={'admin' : '  '} Eg: $apr1$XSA0DeSq$37BCBi9Vs41pMlvoDwevP1 == R3dis
+          
+      Add the master and apps FQDN for the below parameters
+          
+           openshift_public_hostname=master.<FQDN>  Eg:master.okdw1.demo-rlec.redislabs.com
+           openshift_master_default_subdomain=apps.<FQDN> Eg:apps.okdw1.demo-rlec.redislabs.com
+           
+      Add the master FQDN in the [master] and [etcd] section
+      
+          eg:master.okdw1.demo-rlec.redislabs.com
+          
+      Add the FQDN for Infra and nodes in the [nodes] section
+        
+          master.<FQDN> openshift_node_group_name='node-config-master-infra' openshift_schedulable=true
+          node1.<FQDN> openshift_node_group_name='node-config-compute'
+          node2.<FQDN> openshift_node_group_name='node-config-compute'
+          node3.<FQDN> openshift_node_group_name='node-config-compute'
+          Eg:
+          master.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-master-infra' openshift_schedulable=true
+          node1.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
+          node2.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
+          node3.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
+      
+      
+  2. Preparing the prepare.yaml file (No changes required to this file -- use as/is)
   
 Installing Pre-Requisite Software:
   
