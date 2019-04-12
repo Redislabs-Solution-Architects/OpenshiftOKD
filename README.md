@@ -18,12 +18,12 @@ Environment Preparation:
     a. define the DNS configuration for all nodes
     
         Example Configuration:
-          *.okdw1.demo-rlec.redislabs.com     CNAME   master.okdw1.demo-rlec.redislabs.com
-          okdw1.demo-rlec.redislabs.com       CNAME   master.okdw1.demo-rlec.redislabs.om
-          master.okdw1.demo-rlec.redislabs.com  A     <IP Address>
-          node1.okdw1.demo-rlec.redislabs.com   A     <IP Address>
-          node2.okdw1.demo-rlec.redislabs.com   A     <IP Address>
-          node3.okdw1.demo-rlec.redislabs.com   A     <IP Address>
+          *.okdw1.redislabs.com     CNAME   master.okdw1.redislabs.com
+          okdw1.redislabs.com       CNAME   master.okdw1.redislabs.om
+          master.okdw1.redislabs.com  A     <External IP Address>
+          node1.okdw1.redislabs.com   A     <External IP Address>
+          node2.okdw1.redislabs.com   A     <External IP Address>
+          node3.okdw1.redislabs.com   A     <External IP Address>
   
   4. SSH Access from the Master Node to all Nodes
   
@@ -31,10 +31,10 @@ Environment Preparation:
       b. test ssh -i <key> centos@<fqdn of node>
          
          Example:
-          ssh -i ssh_key.pem centos@master.okdw1.demo-rlec.redislabs.com
-          ssh -i ssh_key.pem centos@node1.okdw1.demo-rlec.redislabs.com
-          ssh -i ssh_key.pem centos@node2.okdw1.demo-rlec.redislabs.com
-          ssh -i ssh_key.pem centos@node3.okdw1.demo-rlec.redislabs.com
+          ssh -i ssh_key.pem centos@master.okdw1.redislabs.com
+          ssh -i ssh_key.pem centos@node1.okdw1.redislabs.com
+          ssh -i ssh_key.pem centos@node2.okdw1.redislabs.com
+          ssh -i ssh_key.pem centos@node3.okdw1.redislabs.com
   
   5. Firewall Rules
     a. ensure all nodes are accessible using the external IP address (all traffic)
@@ -69,12 +69,12 @@ Openshift Install Preparation:
           
       Add the master and apps FQDN for the below parameters
           
-           openshift_public_hostname=master.<FQDN>  Eg:master.okdw1.demo-rlec.redislabs.com
-           openshift_master_default_subdomain=apps.<FQDN> Eg:apps.okdw1.demo-rlec.redislabs.com
+           openshift_public_hostname=master.<FQDN>  Eg:master.okdw1.redislabs.com
+           openshift_master_default_subdomain=apps.<FQDN> Eg:apps.redislabs.com
            
       Add the master FQDN in the [master] and [etcd] section
       
-          eg:master.okdw1.demo-rlec.redislabs.com
+          eg:master.okdw1.redislabs.com
           
       Add the FQDN for Infra and nodes in the [nodes] section
         
@@ -83,10 +83,10 @@ Openshift Install Preparation:
           node2.<FQDN> openshift_node_group_name='node-config-compute'
           node3.<FQDN> openshift_node_group_name='node-config-compute'
           Eg:
-          master.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-master-infra' openshift_schedulable=true
-          node1.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
-          node2.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
-          node3.okdw1.demo-rlec.redislabs.com openshift_node_group_name='node-config-compute'
+          master.okdw1.redislabs.com openshift_node_group_name='node-config-master-infra' openshift_schedulable=true
+          node1.okdw1.redislabs.com openshift_node_group_name='node-config-compute'
+          node2.okdw1.redislabs.com openshift_node_group_name='node-config-compute'
+          node3.okdw1.redislabs.com openshift_node_group_name='node-config-compute'
       
       
   2. Preparing the prepare.yaml file (No changes required to this file -- use as/is)
