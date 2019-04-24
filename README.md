@@ -39,9 +39,9 @@ Environment Preparation:
   5. Firewall Rules
     a. ensure all nodes are accessible using the external IP address (all traffic)
     
-      a. all traffic to and from all external IP of the nodes
-      b. all internal traffic for the security group
-      c. DNS ports
+      all traffic to and from all external IP of the nodes
+      all internal traffic for the security group
+      DNS ports
    
    6. Create an S3 Bucket in the same region as the instances
   
