@@ -13,7 +13,9 @@ Environment Preparation:
   2. Create an IAM Rules
   
        Create an IAM role with administrator access and assign it as a tag for all instances
-  3. DNS Configuration
+  3. Add an additional volume for each of the instances 
+  
+  4. DNS Configuration
   
     a. define the DNS configuration for all nodes
     
@@ -25,7 +27,7 @@ Environment Preparation:
           node2.okdw1.redislabs.com   A     <External IP Address>
           node3.okdw1.redislabs.com   A     <External IP Address>
   
-  4. SSH Access from the Master Node to all Nodes
+  5. SSH Access from the Master Node to all Nodes
   
       a. Ensure the ssh key is available on the master node 
       b. test ssh -i <key> centos@<fqdn of node>
@@ -36,14 +38,14 @@ Environment Preparation:
           ssh -i ssh_key.pem centos@node2.okdw1.redislabs.com
           ssh -i ssh_key.pem centos@node3.okdw1.redislabs.com
   
-  5. Firewall Rules
+  6. Firewall Rules
     a. ensure all nodes are accessible using the external IP address (all traffic)
     
       1. all traffic to and from all external IP of the nodes
       2. all internal traffic for the security group
       3. DNS ports
    
-   6. Create an S3 Bucket in the same region as the instances
+   7. Create an S3 Bucket in the same region as the instances
   
 Openshift Install Preparation:
   
